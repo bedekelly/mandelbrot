@@ -14,7 +14,6 @@ def display(rgb_from_coords=None):
     Display an image of dimensions MAX_X, MAX_Y, delegating to rgb_from_coords
     to choose the colour for the current pixel.
     :param rgb_from_coords:Function mapping x, y to (r, g, b).
-    :return:None
     """
 
     if rgb_from_coords is None:
