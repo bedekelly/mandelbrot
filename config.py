@@ -1,0 +1,5 @@
+MAX_X, MAX_Y = 360, 360
+
+X1, Y1 = 0, 0
+X2, Y2 = 260, 260
+MAX_ITERATION = 255
