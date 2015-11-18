@@ -3,6 +3,8 @@ renderer.py
 Provide an easy interface for pixel-by-pixel rendering.
 """
 import itertools as it
+
+import time
 from PIL import Image
 from PIL.ImageDraw import ImageDraw
 
@@ -20,9 +22,12 @@ def display(rgb_from_coords=None):
         raise ValueError("Pass in a callback function (x, y)->(r,g,b).")
     img = Image.new("RGB", (MAX_X, MAX_Y))
     draw = ImageDraw(img)
+    t1 = time.time()
     for coords in it.product(range(MAX_X), range(MAX_Y)):
         rgb = rgb_from_coords(*coords)
         draw.point(coords, rgb)
+    t2 = time.time()
+    print("Calculation and rendering took", t2-t1, "seconds in total.")
     img.show()
 
 
