@@ -1,3 +1,8 @@
+"""
+utils.py
+Provide some general utilities for working with numbers and functions.
+"""
+
 from functools import wraps
 
 

@@ -1,4 +1,9 @@
-MAX_X, MAX_Y = 720, 720
+"""
+config.py
+Describe the image size, iteration depth and location on the fractal to render.
+"""
+
+MAX_X, MAX_Y = 1080, 1080
 MAX_ITERATION = 255
 X1, X2, Y1, Y2 = -2.5, -0.5, -1, 1
 # Seahorses:
