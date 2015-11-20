@@ -16,7 +16,7 @@ def color(it):
     :return:A tuple (R, G, B) of color values to paint this pixel.
     """
     # TODO: Figure out a linear colour-map that looks half-decent.
-    return (it+160) % 256, (it+80) % 256, it % 256
+    return it%256, it%256, it%256
 
 
 @progress(iterations=MAX_X * MAX_Y)
