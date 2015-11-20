@@ -3,7 +3,7 @@ mandelbrot.py
 Define a mapping from (x, y) pixel locations to (R,G,B) colour values by
 applying the Mandelbrot algorithm and counting iterations.
 """
-
+import sys
 from config import MAX_X, MAX_Y, MAX_ITERATION, X1, X2, Y1, Y2
 from utils import progress, scaled
 from iterations import iterations as count_its
@@ -41,5 +41,8 @@ def basic_mandelbrot(x, y):
 
 
 if __name__ == "__main__":
-    from renderer import display
-    display(basic_mandelbrot)
+    from renderer import render
+    filename = "mandelbrot.png"
+    if "-o" in sys.argv:
+        filename = sys.argv[-1]
+    render(basic_mandelbrot, filename)

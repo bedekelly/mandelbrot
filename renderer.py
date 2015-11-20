@@ -11,13 +11,12 @@ from PIL.ImageDraw import ImageDraw
 from config import MAX_X, MAX_Y
 
 
-def display(rgb_from_coords=None):
+def render(rgb_from_coords=None, filename="mandelbrot.png"):
     """
     Display an image of dimensions MAX_X, MAX_Y, delegating to rgb_from_coords
     to choose the colour for the current pixel.
     :param rgb_from_coords:Function mapping x, y to (r, g, b).
     """
-
     if rgb_from_coords is None:
         raise ValueError("Pass in a callback function (x, y)->(r,g,b).")
     img = Image.new("RGB", (MAX_X, MAX_Y))
@@ -28,8 +27,7 @@ def display(rgb_from_coords=None):
         draw.point(coords, rgb)
     t2 = time.time()
     print("Calculation and rendering took", t2-t1, "seconds in total.")
-    with open("file.png", "wb") as f:
-        img.save(f)
+    img.save("file.png")
 
 
 if __name__ == "__main__":
