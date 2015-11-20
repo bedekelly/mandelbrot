@@ -28,7 +28,8 @@ def display(rgb_from_coords=None):
         draw.point(coords, rgb)
     t2 = time.time()
     print("Calculation and rendering took", t2-t1, "seconds in total.")
-    img.show()
+    with open("file.png", "wb") as f:
+        img.save(f)
 
 
 if __name__ == "__main__":
