@@ -6,6 +6,7 @@ applying the Mandelbrot algorithm and counting iterations.
 
 from config import MAX_X, MAX_Y, MAX_ITERATION, X1, X2, Y1, Y2
 from utils import progress, scaled
+from iterations import iterations as count_its
 
 
 def color(it):
@@ -30,20 +31,12 @@ def basic_mandelbrot(x, y):
     x = scaled(x, 0, MAX_Y, X1, X2)
     y = scaled(y, 0, MAX_Y, Y1, Y2)
 
-    # Set the initial value z0 and the constant c.
-    z = complex(0, 0)
-    c = complex(x, y)
-
     # Count the number of iterations to escape an arbitrary "bound".
-    for i in range(MAX_ITERATION):
-        z = z*z + c
-        if abs(z) > 4:
-            break
-    else:
-        # We haven't escaped in time - return a default colour of black.
-        return 0, 0, 0
+    i = count_its(x, y, MAX_ITERATION)
 
     # Return a color based on this escape time.
+    if i == MAX_ITERATION:
+        return 0, 0, 0
     return color(i)
 
 
