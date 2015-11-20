@@ -27,7 +27,7 @@ def render(rgb_from_coords=None, filename="mandelbrot.png"):
         draw.point(coords, rgb)
     t2 = time.time()
     print("Calculation and rendering took", t2-t1, "seconds in total.")
-    img.save("file.png")
+    img.save(filename)
 
 
 if __name__ == "__main__":
