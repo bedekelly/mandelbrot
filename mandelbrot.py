@@ -4,6 +4,8 @@ Define a mapping from (x, y) pixel locations to (R,G,B) colour values by
 applying the Mandelbrot algorithm and counting iterations.
 """
 import sys
+from colorsys import hsv_to_rgb
+
 from config import MAX_X, MAX_Y, MAX_ITERATION, X1, X2, Y1, Y2
 from utils import progress, scaled
 from iterations import iterations as count_its
@@ -16,7 +18,8 @@ def color(it):
     :return:A tuple (R, G, B) of color values to paint this pixel.
     """
     # TODO: Figure out a linear colour-map that looks half-decent.
-    return it%256, it%256, it%256
+    h = it/MAX_ITERATION
+    return tuple(int(i*100) for i in hsv_to_rgb(h, 0.8, 1))
 
 
 @progress(iterations=MAX_X * MAX_Y)
