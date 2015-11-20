@@ -3,8 +3,8 @@
 
 
 /* Calculate the number of iterations a point takes to leave a bound. */
-int iterations(int cr, int ci, int max_it) {
-  int i;
+int iterations(double cr, double ci, int max_it) {
+  int i = 0;
   double complex z = 0 + 0*I;
   double complex c = cr + ci*I;
   for (i=0; i<max_it; i++) {
@@ -21,7 +21,7 @@ static PyObject *py_iterations (PyObject *self, PyObject *args) {
   double x, y;
   int its, max_iterations;
   
-  if (!PyArg_ParseTuple(args, "dd|i:iterations", &x, &y, &max_iterations))
+  if (!PyArg_ParseTuple(args, "ddi", &x, &y, &max_iterations))
     return NULL;
   
   its = iterations(x, y, max_iterations);
